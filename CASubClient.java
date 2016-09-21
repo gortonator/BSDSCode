@@ -11,6 +11,7 @@ import java.rmi.registry.Registry;
 /**
  *
  * @author Ian Gortan
+ * Simple client to test subscribing from CAServer over RMI
  */
 public class CASubClient {
 

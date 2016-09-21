@@ -13,6 +13,8 @@ package BSDSAssignment1;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+// Simple client to test publishing to CAServer over RMI
+
 public class CAPubClient {
 
     private CAPubClient() {}

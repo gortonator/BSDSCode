@@ -8,6 +8,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+//Skeleton of CAServer supporting both BSDS interfaces
+
 public class CAServer implements BSDSPublishInterface, BSDSSubscribeInterface{
 
     public int registerPublisher(String name, String topic) 
@@ -52,16 +54,16 @@ public class CAServer implements BSDSPublishInterface, BSDSSubscribeInterface{
             BSDSPublishInterface pStub = (BSDSPublishInterface) UnicastRemoteObject.exportObject(objPub, 0);
             BSDSSubscribeInterface sStub = (BSDSSubscribeInterface) UnicastRemoteObject.exportObject(objSub, 0);
             System.out.println("stubs created ....");
-            // Bind the remote object's stub in the registry
+            // Bind the remote object's stub in the local host registry
             LocateRegistry.createRegistry(1099);  
                 
             Registry registry = LocateRegistry.getRegistry();  
-            System.out.println("Ref to Reistry ok");  
+            System.out.println("Ref to Registry ok");  
             try {
                 registry.bind("CAServerPublisher", pStub);
                 registry.bind("CAServerSubscriber", sStub);
             } catch(Exception e) {
-                System.out.println("Caught already bound exception" + e.toString());
+                System.out.println("Caught already bound exception, probably safe to continue in dev mode" + e.toString());
             }
             System.err.println("CAServer ready");
         } catch (Exception e) {

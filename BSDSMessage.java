@@ -3,6 +3,8 @@
  */
 package BSDSAssignment1;
 
+//contains data for message delivery to subscribers
+
 public class BSDSMessage {
     private String title;
     private String message;
